@@ -178,3 +178,58 @@ let products = arr => {
 };
 
 console.log(products([1, 3, 9, 4]));
+
+// Input: [
+//   [1, 0, 1, 1, 0],
+//   [0, 1, 1, 1, 0],
+//   [1, 1, 1, 1, 1],
+//   [1, 0, 1, 1, 1],
+//   [1, 1, 1, 1, 1]
+// ];
+// Output: [
+//   [0, 0, 0, 0, 0],
+//   [0, 0, 0, 0, 0],
+//   [0, 0, 1, 1, 0],
+//   [0, 0, 0, 0, 0],
+//   [0, 0, 1, 1, 0]
+// ];
+
+// let newArr = [];
+// for (let i = 0; i < arr.length; i++) {
+//   for (let j = 0; j < arr[i].length; j++) {
+//     if (arr[i][j] === 0) {
+//       console.log(i, j);
+//       newArr.push(arr.map(subArr =>
+//           subArr.map((val, y) => (y === j ? 0 : val))
+//         ));
+//     }
+//   }
+// }
+// return newArr;
+
+let arrayOrganizer = arr => {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j] === 0) {
+        console.log(i, j);
+        newArr.push(
+          ...arr.map(subArr => subArr.map((val, y) => (y === j ? 0 : val)))
+        );
+      }
+    }
+  }
+  return newArr;
+};
+
+// arr[i].includes(0) ? newArr.push(arr[i].map(() => 0)) : newArr.push(arr[i]);
+
+console.log(
+  arrayOrganizer([
+    [1, 0, 1, 1, 0],
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1],
+    [1, 0, 1, 1, 1],
+    [1, 1, 1, 1, 1]
+  ])
+);
